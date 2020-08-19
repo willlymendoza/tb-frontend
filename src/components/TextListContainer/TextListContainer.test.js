@@ -1,8 +1,6 @@
 import React from "react";
 import TextListContainer from "./TextListContainer";
 import { render, cleanup } from "@testing-library/react";
-import { shallow } from "enzyme";
-import TextList from "../TextList/TextList";
 
 let container;
 
@@ -19,7 +17,7 @@ test("should renders title correctly", () => {
 });
 
 test("should renders TextList correctly", () => {
-  const wrapper = shallow(<TextListContainer textArray={[]} />);
+  const { getByTestId } = container;
 
-  expect(wrapper.find(TextList).length).toEqual(1);
+  expect(getByTestId("list-container")).toBeTruthy();
 });
