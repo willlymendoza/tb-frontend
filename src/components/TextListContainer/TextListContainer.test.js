@@ -1,15 +1,21 @@
 import React from "react";
 import TextListContainer from "./TextListContainer";
-import { render, screen, cleanup } from "@testing-library/react";
+import { render, cleanup } from "@testing-library/react";
 import { shallow } from "enzyme";
-import TextList from "./TextList";
+import TextList from "../TextList/TextList";
+
+let container;
 
 afterEach(cleanup);
 
-test("should renders title correctly", () => {
-  render(<TextListContainer textArray={[]} />);
+beforeEach(() => {
+  container = render(<TextListContainer textArray={[]} />);
+});
 
-  expect(screen.getByTestId("title").textContent).toEqual("Listado de textos");
+test("should renders title correctly", () => {
+  const { getByTestId } = container;
+
+  expect(getByTestId("title").textContent).toEqual("Listado de textos");
 });
 
 test("should renders TextList correctly", () => {

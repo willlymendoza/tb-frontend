@@ -1,46 +1,23 @@
 import React from "react";
 import Form from "./Form";
 import { render, cleanup } from "@testing-library/react";
-import { shallow } from "enzyme";
 
+let container;
 afterEach(cleanup);
 
-const mockSubmit = jest.fn();
-const mockInputChange = jest.fn();
+beforeEach(() => {
+  container = render(
+    <Form
+      handleInputChange={jest.fn()}
+      handleOnSubmit={jest.fn()}
+      inputText=""
+      inputError=""
+    />
+  );
+});
 
 test("should renders Form whitout crashing", () => {
-  render(
-    <Form
-      handleInputChange={mockInputChange}
-      handleOnSubmit={mockSubmit}
-      inputText=""
-      inputError=""
-    />
-  );
-});
+  const { getByTestId } = container;
 
-test("should render form", () => {
-  const wrapper = shallow(
-    <Form
-      handleInputChange={mockInputChange}
-      handleOnSubmit={mockSubmit}
-      inputText=""
-      inputError=""
-    />
-  );
-
-  expect(wrapper.find("form").children()).toHaveLength(3);
-});
-
-test("should render form label title", () => {
-  const wrapper = shallow(
-    <Form
-      handleInputChange={mockInputChange}
-      handleOnSubmit={mockSubmit}
-      inputText=""
-      inputError=""
-    />
-  );
-
-  expect(wrapper.find("label").text()).toEqual("Ingrese texto");
+  expect(getByTestId("text-form")).toBeTruthy();
 });

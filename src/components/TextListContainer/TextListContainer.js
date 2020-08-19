@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import TextList from "./TextList";
+import TextList from "../TextList/TextList";
 
 const TextListContainer = ({ textArray }) => {
   return (
-    <div className="row">
+    <div className="row" data-testid="list-container">
       <div className="col-md-12">
         <h1 className="display-4" data-testid="title">
           Listado de textos

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Form from "../Form/Form";
-import TextList from "../TextList/TextList";
+import TextListContainer from "../TextListContainer/TextListContainer";
 import { addText, addError } from "../../redux/textDucks";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -31,14 +31,14 @@ const Container = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container" data-testid="container">
       <Form
         handleInputChange={handleInputChange}
         handleOnSubmit={handleOnSubmit}
         inputText={inputText}
         inputError={error}
       />
-      <TextList textArray={textArray} />
+      <TextListContainer textArray={textArray} />
     </div>
   );
 };

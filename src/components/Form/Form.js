@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const Form = ({ handleOnSubmit, handleInputChange, inputText, inputError }) => {
   return (
-    <form onSubmit={handleOnSubmit}>
+    <form onSubmit={handleOnSubmit} data-testid="text-form">
       <div className="form-group">
         <label>Ingrese texto</label>
         <input
